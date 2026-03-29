@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home Lab </title>
+  <link rel="stylesheet" href="style.css">
+  <!-- favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <meta name="theme-color" content="#00adb5">
+
+  <style>
+    /* small page-specific tweaks to make the first render polished */
+    .article-hero {
+      padding: 56px 24px;
+      background: linear-gradient(120deg, rgba(0,173,181,0.12), rgba(0,0,0,0.04));
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .article-meta {
+      color: #6b7280;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+  <h1 class="logo">Achraf Bourramane</h1>
+  <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <nav>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+    </nav>
+    <div class="nav-actions">
+      <select id="langSelect" aria-label="Select language">
+        <option value="en">EN</option>
+        <option value="de">DE</option>
+        <option value="fr">FR</option>
+        <option value="ar">AR</option>
+        <option value="es">ES</option>
+      </select>
+      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <main class="article-page">
+    <section class="article-hero">
+      <div class="article-container">
+        <h1 data-i18n="article.title">Home Lab - Small work area with two domain controllers.</h1>
+        <div class="article-meta" data-i18n="article.meta">By Achraf — March 29, 2026 · 3 min read</div>
+      </div>
+    </section>
+
+    <div class="article-grid">
+      <article class="article-card article-container article-content" data-i18n-html="article.body">
+  <p class="lead" data-i18n="article.lead">Windows Server Home Lab - Full Technical Refresh.</p>
+
+      <h2>Main Goals</h2>
+      <p>The goal was to design and deploy a realistic enterprise Windows environment to understand how system interact in real companies. <br> The focus was on Active Directory, DNS, Group Policy management, DHCP, File Service, WSUS, and troubleshooting.</p>
+
+      <blockquote>
+        <p>“Experience is the best teacher.”</p>
+        <cite>— Achraf Bourramane</cite>
+      </blockquote>
+    <!--* Phase 1 starts Here -->
+      <h3>Phase 1 - Infrastructure & Network</h3>
+      <p>Break your content into sections with subheadings. Use lists for steps or short points:</p>
+      <ul>
+        <li>VirtualBox as the virtualization platform</li>
+        <li>DC1 : Windows Server 2019 Core (no GUI)</li>
+        <li>DC2 : Windows Server 2022 (GUI)</li>
+        <li>Windows 10 client for testing</li>
+        <li>Bridged networking to simulate a real corporate networks</li>
+        <li>Static IP addresses assigned to servers</li>
+      </ul>
+    <!--* Phase 2 starts Here -->
+      <h3>Phase 2 - Active Directory & Deployment</h3>
+      <p>GUI(DC2):</p>
+         <ul>
+          <li>Server Manager --> Add Roles and Features</li>
+          <li>Installed Active Directory Domain Services role</li>
+          <li>Promoted DC2 to a domain controller for the new domain</li>
+          <li>Join existing domain and configure as a second domain controller</li>
+        </ul>
+      <p>Non-GUI(DC1) - Key command :</p>
+        <ul>
+            <li>Install-WindowsFeature AD-Domain-Services</li>
+            <li>Install-ADDSForest -DomainName "lab.local"</li>
+            <li>Install-ADDSDomainController -DomainName "lab.local"</li>
+        </ul>
+    <!--* Phase 2 ends Here -->
+      <h3>Phase 3 - DNS & DHCP configuration</h3>
+        <p>DNS is critical for Active Directory functionality. <br> 
+        Non-GUI Commands :</p>
+        <ul>
+            <li>Get-DnsClientServerAddress</li>
+            <li>Set-DnsClientServerAddress -InterfaceAlias "Ethernet" -ServerAddresses ("127.0.0.1","192.168.1.30")</li>
+        </ul>
+      <p>Lesson : <br> Active Directory WSUS, and domain join operation depends entirely on correct DNS configuration.</p>
+    <!--* Phase 4 starts Here -->
+      <h3>Phase 4 - Organization Units, Users, and Groups (OU) Structure</h3>
+      <p>GUI(Active Directory Users and Computers):</p>
+        <ul>
+            <li>Created Group Policy Objects (GPOs)</li>
+            <li>Linked GPOs to appropriates OUs</li>
+            <li>Enforced password policies and user restrictions</li>
+        </ul>
+      <p>Verification Command:</p>
+        <ul>
+            <li>Get-GPO -All</li>
+            <li>Get-GPLink -Target "OU=Users,DC=lab,DC=local"</li>
+        </ul>
+    <!--* Phase 5 starts Here -->
+      <p>Phase 5 - Group Policy Management</p>
+      <p>GUI(Group Policy Management Console):</p>
+        <ul>
+            <li>Created and linked Group Policy Objects</li>
+            <li>Enforced password policies and user restrictions</li>
+        </ul>
+      <p>Verification Command:</p>
+        <ul>
+            <li>gpupdate /force</li>
+            <li>gpresult /r</li>
+        </ul>
+    <!--* Phase 6 starts Here -->
+        <h3>Phase 6 - DHCP Server</h3>
+        <p>GUI(DC2):</p>
+        <ul>
+            <li>Installed DHCP Server role</li>
+            <li>Configured DHCP scopes 192.168.1.20 - 192.168.1.120</li>
+            <li>Defined subnet mask, default gateway, and DNS servers</li>
+        </ul>
+        <p>Lesson:</p>
+        <p>DHCP is a supporting service, not a core security control.</p>
+    <!--* Phase 7 starts Here -->
+        <h3>Phase 7 - File Server & NTFS Permissions</h3>
+        <p>GUI:</p>
+        <ul>
+            <li>Created company Data Structure</li>
+            <li>Configure NTFS permission using AD security groups</li>
+            <li>Removed 'Everyone' and applied least privilege access</li>
+        </ul>
+        <p>Concept:</p>
+        <p>Active Directory objects are not files system objects. NTFS permissions are managed via File Explorer</p>
+    <!--* Phase 8 starts Here -->
+    <h3>Phase 8 - WSUS</h3>
+        <p>GUI:</p>
+        <ul>
+            <li>Installed WSUS role</li>
+            <li>Resolve post-deployment errors</li>
+            <li>Corrected service account permissions</li>
+            <li>Ensured DNS was properly configured</li>
+        </ul>
+        <p>Lesson:</p>
+        <p>WSUS provides centralized management of Windows updates through Group Policy.</p>
+    <!--* Phase 9 starts Here -->    
+        <h3>Phase 9 - Challenge Faced & Solutions</h3>
+        <P>DNS Issues:</P>
+        <ul>
+            <li>Problem:Domain join and WSUS failures.</li>
+            <li>Solution: DNS configured to point to itself (127.0.0.1) and partner DC.</li>
+            <li>Results: Reliable name resolution and service discovery.</li>
+        </ul>
+        <P>WSUS Post-Deployment Errors:</P>
+        <ul>
+            <li>Problem: Service Network Not found.</li>
+            <li>Solution: Selected Local Computer context.</li>
+            <li>Results: WSUS services could access required folders.</li>
+        </ul>
+        <p>Networking Confusion:</p>
+        <ul>
+            <li>Problem: Ping failing using Host-Only networking.</li>
+            <li>Solution: Standardized on bridged networking.</li>
+            <li>Results: Realistic Enterprise connectivity.</li>
+        </ul>
+        <p>NTFS Permissions Problems:</p>
+        <ul>
+            <li>Problem: Groups not visible when assigning permissions.</li>
+            <li>Solution: Selected correct domain location.</li>
+            <li>Results: Proper access control.</li>
+        </ul>
+    <!--* Phase 10 starts Here -->
+        <h3>Phase 10 - Final Outcomes</h3>
+        <p>This lab demonstrates enterprise-level System Integration skills including: <br> Active Directory management, DNS, DHCP, Group Policy, file Services, WSUS, and Structured Troubleshooting. <br> it is fully suitable for my competence </p>
+
+  <p><a href="index.html" class="back-link" data-i18n="article.back">← Back to home</a></p>
+      </article>
+
+      <aside class="article-toc" aria-label="Table of contents">
+        <!-- TOC generated by script.js -->
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <p style="text-align:center; padding:24px;">© 2026 Achraf Bourramane</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
