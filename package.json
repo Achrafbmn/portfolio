@@ -1,7 +1,20 @@
 {
   "name": "poltfolio",
   "version": "1.0.0",
-  "description": "Frontend portfolio site. Backend removed.",
+  "description": "Achraf Bourramane Portfolio Website",
   "private": true,
-  "scripts": {}
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "*",
+    "compression": "*",
+    "express-rate-limit": "*",
+    "winston": "*",
+    "validator": "*",
+    "nodemailer": "*"
+  }
 }

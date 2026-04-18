@@ -3,7 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Achraf Bourramane - Web Developer, Network Administrator and IT Technician based in Marrakech. Portfolio with projects, skills and contact information.">
+  <meta name="keywords" content="web developer, network administrator, IT technician, portfolio, Marrakech, Windows Server, Active Directory">
+  <meta name="author" content="Achraf Bourramane">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://achrafbmn.github.io/portfolio/">
+  <meta property="og:title" content="Achraf Bourramane | Portfolio">
+  <meta property="og:description" content="Web Developer / Network Administrator / IT Technician">
+  <meta property="og:image" content="https://achrafbmn.github.io/portfolio/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://achrafbmn.github.io/portfolio/">
+  <meta property="twitter:title" content="Achraf Bourramane | Portfolio">
+  <meta property="twitter:description" content="Web Developer / Network Administrator / IT Technician">
+  <meta property="twitter:image" content="https://achrafbmn.github.io/portfolio/og-image.jpg">
+  
   <title>Achraf Bourramane | Portfolio</title>
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Achraf Bourramane",
+    "jobTitle": "Web Developer",
+    "url": "https://achrafbmn.github.io/portfolio/"
+  }
+  </script>
   <link rel="stylesheet" href="style.css">
   <!-- favicon -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -39,7 +67,10 @@
   <h2 data-i18n="hero.title">Hello, I’m Achraf Bourramane</h2>
   <div class="accent-underline" aria-hidden="true"></div>
   <p data-i18n="hero.tagline">Web Developer / Network Administrator / IT technicien</p>
-  <button class="hero-cta" onclick="scrollToSection('projects')" data-i18n="hero.cta">View My Work</button>
+  <div style="display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; justify-content: center;">
+    <button class="hero-cta" onclick="scrollToSection('projects')" data-i18n="hero.cta">View My Work</button>
+    <button class="hero-cta hero-cta-secondary" onclick="window.open('CV-trial(1).pdf', '_blank')" data-i18n="hero.download">Download Resume</button>
+  </div>
   </section>
 
   <!-- About -->
@@ -74,36 +105,52 @@
         <p data-i18n="project3.desc">I have made a Website a well known rent Company in Marrakech Monopage and a representive website.</p>
         <a href="https://achrafbmn.github.io/Peace-Truck-Vichle/" target="_blank" data-i18n="project3.link">View</a>
       </div>
+
+      <div class="project-card">
+        <h3 style="color: red;" data-i18n="project4.title">Reservation website For YouLux Cars</h3><br>
+        <p style="color: white;" data-i18n="project4.desc">Write a backend and frontend website; UI/UX is simple and understandable.</p>
+        <a href="https://achrafbmn.github.io/YouluxCars-Speed/" target="_blank" data-i18n="project4.link">View</a>
+      </div>
     </div>
   </section>
 
   <!-- Skills -->
   <section id="skills" class="section">
-    <h2>Skills</h2>
+    <h2 data-i18n="skills.title">Skills</h2>
     <ul class="skills-list">
-      <li>HTML</li>
-      <li>CSS / SCSS</li>
-      <li>JavaScript</li>
-      <li>TypeScript</li>
-      <li>Network</li>
-      <li>Database Management</li>
-      <li>SQL</li>
-      <li>PHP</li>
-      <li>Python</li>
-      <li>Linux</li>
-      <li>MERISE/ UML</li>
-      <li>CyberSecurity Compliance</li>
-      <li>Wireshark</li>
-      <li>Tailwind | Bootstrap</li>
+      <li data-level="95">HTML</li>
+      <li data-level="90">CSS / SCSS</li>
+      <li data-level="85">JavaScript</li>
+      <li data-level="80">TypeScript</li>
+      <li data-level="92">Network</li>
+      <li data-level="82">Database Management</li>
+      <li data-level="85">SQL</li>
+      <li data-level="78">PHP</li>
+      <li data-level="80">Python</li>
+      <li data-level="88">Linux</li>
+      <li data-level="75">MERISE/ UML</li>
+      <li data-level="80">CyberSecurity Compliance</li>
+      <li data-level="85">Wireshark</li>
+      <li data-level="85">Tailwind | Bootstrap</li>
     </ul>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="section dark">
-    <h2>Contact</h2><br>
+    <h2 data-i18n="contact.title">Contact</h2><br>
     <p>Email: AchrafBourraman@gmail.com</p><br>
     <p>Phone: +212 694170015</p><br>
     <p><a href="https://www.linkedin.com/in/achraf-bmn-49555a273" target="_blank" class="My-Link">LinkedIn</a> | <a href="https://github.com/Achrafbmn" class="My-Link" target="_blank">GitHub</a> | <a href="https://www.instagram.com/achraf.bmn/" class="My-Link" target="_blank">Instagram</a></p>
+    <br>
+    <form id="contactForm" style="max-width: 500px; margin: 24px auto 0;">
+      <div style="display: grid; gap: 16px;">
+        <input type="text" id="name" name="name" aria-label="Your name" placeholder="Your Name" required style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-size: 16px;">
+        <input type="email" id="email" name="email" aria-label="Your email" placeholder="Your Email" required style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-size: 16px;">
+        <textarea id="message" name="message" rows="5" aria-label="Your message" placeholder="Your Message" required style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-size: 16px; resize: vertical;"></textarea>
+        <button type="submit" class="hero-cta" style="margin-top: 8px;">Send Message</button>
+        <div id="contactFeedback" aria-live="polite" style="min-height:1.2em; color: #fff;"></div>
+      </div>
+    </form>
   </section>
 
   <footer>

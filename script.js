@@ -8,8 +8,7 @@ const toggle = document.getElementById("themeToggle");
 if (toggle) {
   toggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
-    // optional: change the icon (moon/sun)
-    // toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
   });
 }
 
@@ -24,6 +23,25 @@ function onScroll() {
   } else {
     backToTop.classList.remove('show');
   }
+  
+  // Active nav link highlighting
+  const sections = document.querySelectorAll('.section[id]');
+  const navLinks = document.querySelectorAll('.navbar nav a');
+  
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
 }
 
 if (backToTop) {
@@ -46,6 +64,7 @@ const translations = {
     'hero.title': 'Hello, I\'m Achraf Bourramane',
     'hero.tagline': 'Web Developer / Network Administrator / IT technicien',
     'hero.cta': 'View My Work',
+    'hero.download': 'Download Resume',
     'about.title': 'About Me',
     'about.text': 'I am a Network and System Administrator with a passion for web development. I hold a university degree in Computer Science and constantly learn new technologies to expand my skills.',
     'projects.title': 'Projects',
@@ -55,6 +74,9 @@ const translations = {
     'project2.title': 'Home lab with Two DCs',
     'project2.desc': 'A home lab with two domain controllers for testing DNS, Active Directory, DHCP and HTTPS.',
     'project2.link': 'View',
+    'project4.title': 'Reservation website For YouLux Cars',
+    'project4.desc': 'Write a backend and frontend website; UI/UX is simple and understandable.',
+    'project4.link': 'View',
   'project3.title': 'PFE stage website.',
   'project3.desc': 'I created a single-page representative website for a well-known rental company in Marrakech.',
   'project3.link': 'View',
@@ -207,6 +229,7 @@ const translations = {
     'hero.title': 'Hallo, ich bin Achraf Bourramane',
     'hero.tagline': 'Webentwickler / Netzwerkadministrator / IT-Techniker',
     'hero.cta': 'Meine Arbeit ansehen',
+    'hero.download': 'Lebenslauf herunterladen',
     'about.title': 'Über mich',
     'about.text': 'Ich bin Netzwerk- und Systemadministrator mit einer Leidenschaft für Webentwicklung. Ich habe einen Hochschulabschluss in Informatik und lerne ständig neue Technologien.',
     'projects.title': 'Projekte',
@@ -216,6 +239,9 @@ const translations = {
     'project2.title': 'Home-Lab mit zwei DCs',
     'project2.desc': 'Ein Home-Lab mit zwei Domänencontrollern zum Testen von DNS, Active Directory, DHCP und HTTPS.',
     'project2.link': 'Ansehen',
+    'project4.title': 'Reservierungswebsite für YouLux Cars',
+    'project4.desc': 'Entwicklung eines Backends und Frontends; UI/UX ist einfach und verständlich.',
+    'project4.link': 'Ansehen',
   'project3.title': 'PFE Praktikumswebsite',
   'project3.desc': 'Ich habe eine einseitige repräsentative Website für ein bekanntes Mietunternehmen in Marrakesch erstellt.',
   'project3.link': 'Ansehen',
@@ -316,6 +342,7 @@ const translations = {
     'hero.title': 'Bonjour, je suis Achraf Bourramane',
     'hero.tagline': 'Développeur Web / Administrateur Réseau / Technicien IT',
     'hero.cta': 'Voir mon travail',
+    'hero.download': 'Télécharger CV',
     'about.title': 'À propos',
     'about.text': 'Je suis administrateur réseau et système, passionné par le développement web. J\'ai un diplôme en informatique et j\'apprends constamment de nouvelles technologies.',
     'projects.title': 'Projets',
@@ -325,6 +352,9 @@ const translations = {
     'project2.title': 'Home lab avec deux DCs',
     'project2.desc': 'Un laboratoire domestique avec deux contrôleurs de domaine pour tester DNS, Active Directory, DHCP et HTTPS.',
     'project2.link': 'Voir',
+    'project4.title': 'Site de réservation pour YouLux Cars',
+    'project4.desc': 'Développement backend et frontend ; UI/UX simple et compréhensible.',
+    'project4.link': 'Voir',
   'project3.title': 'Site de stage PFE',
   'project3.desc': 'J\'ai réalisé un site web monopage représentatif pour une société de location bien connue à Marrakech.',
   'project3.link': 'Voir',
@@ -436,6 +466,7 @@ const translations = {
     'hero.title': 'مرحبًا، أنا Achraf Bourramane',
     'hero.tagline': 'مطور ويب / مسؤول شبكات / فني تكنولوجيا المعلومات',
     'hero.cta': 'عرض أعمالي',
+    'hero.download': 'تحميل السيرة الذاتية',
     'about.title': 'من أنا',
     'about.text': 'أنا مسؤول شبكات وأنظمة ولدي شغف بتطوير الويب. أحمل شهادة جامعية في علوم الحاسوب وأتعلم تقنيات جديدة باستمرار.',
     'projects.title': 'المشاريع',
@@ -445,6 +476,9 @@ const translations = {
     'project2.title': 'مختبر منزلي مع اثنين من DCs',
     'project2.desc': 'قمت بإنشاء مختبر منزلي مع اثنين من وحدات تحكم النطاق لاختبار DNS وActive Directory وDHCP وHTTPS.',
     'project2.link': 'عرض',
+    'project4.title': 'موقع حجز لـ YouLux Cars',
+    'project4.desc': 'كتابة واجهة خلفية وأمامية؛ واجهة المستخدم/تجربة المستخدم بسيطة ومفهومة.',
+    'project4.link': 'عرض',
   'project3.title': 'موقع PFE لمشروع/تدريب',
   'project3.desc': 'قمت بإنشاء موقع صفحة واحدة تمثيلي لشركة تأجير معروفة في مراكش.',
   'project3.link': 'عرض',
@@ -552,6 +586,7 @@ const translations = {
     'hero.title': 'Hola, soy Achraf Bourramane',
     'hero.tagline': 'Desarrollador Web / Administrador de Red / Técnico IT',
     'hero.cta': 'Ver mi trabajo',
+    'hero.download': 'Descargar CV',
     'about.title': 'Sobre mí',
     'about.text': 'Soy administrador de redes y sistemas con pasión por el desarrollo web. Tengo un título universitario en Informática y aprendo nuevas tecnologías continuamente.',
     'projects.title': 'Proyectos',
@@ -561,6 +596,9 @@ const translations = {
     'project2.title': 'Home lab con dos DCs',
     'project2.desc': 'Un laboratorio doméstico con dos controladores de dominio para probar DNS, Active Directory, DHCP y HTTPS.',
     'project2.link': 'Ver',
+    'project4.title': 'Sitio de reservas para YouLux Cars',
+    'project4.desc': 'Desarrollar backend y frontend; UI/UX simple y comprensible.',
+    'project4.link': 'Ver',
   'project3.title': 'Sitio web PFE de prácticas',
   'project3.desc': 'He creado un sitio web de una sola página representativo para una conocida empresa de alquiler en Marrakech.',
   'project3.link': 'Ver',
@@ -827,6 +865,11 @@ function enhanceIndex() {
     if (!n) return;
     n.classList.add('reveal');
     n.style.transitionDelay = (i * 60) + 'ms';
+    
+    // Set skill level CSS variable
+    if (n.dataset && n.dataset.level) {
+      n.style.setProperty('--level', n.dataset.level);
+    }
   });
 
   _indexObserver = new IntersectionObserver((entries, obs) => {
@@ -856,4 +899,73 @@ applyTranslations = function(lang) {
   if (typeof enhanceIndex === 'function') enhanceIndex();
 };
 
-// Contact form handling removed (backend implementation reverted)
+// Contact Form Handling - Saves directly to server messages.json file
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    
+    if (!name || !email || !message) {
+      alert('Please fill all fields');
+      return;
+    }
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    const feedbackEl = document.getElementById('contactFeedback');
+
+    try {
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      // Send message to backend API
+      const response = await fetch('/api/send-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        submitBtn.textContent = '✅ Message Saved!';
+        if (feedbackEl) feedbackEl.textContent = 'Message sent — thank you!';
+        console.log('%c✅ Message saved successfully to messages.json', 'color: green; font-weight: bold');
+      } else {
+        throw new Error(result.error);
+      }
+
+    } catch(error) {
+      submitBtn.textContent = '❌ Error! Please try again';
+      if (feedbackEl) feedbackEl.textContent = 'Failed to send — please try again later.';
+      console.error('%c❌ Error saving message', 'color: red; font-weight: bold', error);
+    }
+    
+    setTimeout(() => {
+      contactForm.reset();
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }, 5000);
+  });
+}
+
+// Smooth page exit transition for internal links
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a');
+  if (link && link.href && link.host === window.location.host && !link.target) {
+    e.preventDefault();
+    document.body.style.opacity = '0';
+    document.body.style.transform = 'translateY(-10px)';
+    document.body.style.transition = 'all 200ms ease';
+    
+    setTimeout(() => {
+      window.location.href = link.href;
+    }, 200);
+  }
+});
