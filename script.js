@@ -1,8 +1,36 @@
 function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({
-    behavior: "smooth"
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  const offset = 100;
+  const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+
+  window.scrollTo({
+    top,
+    behavior: 'smooth'
   });
 }
+
+const navLinks = document.querySelectorAll('.navbar nav a[href^="#"]');
+avLinks.forEach(link => {
+  link.addEventListener('click', (event) => {
+    const targetId = link.getAttribute('href');
+    if (!targetId || targetId === '#') return;
+
+    const target = document.getElementById(targetId.slice(1));
+    if (!target) return;
+
+    event.preventDefault();
+    scrollToSection(target.id);
+    const cleanHash = targetId.startsWith('#') ? targetId : '#' + target.id;
+    if (window.history && window.history.pushState) {
+      history.pushState(null, '', cleanHash);
+    } else {
+      window.location.hash = cleanHash;
+    }
+  });
+});
+
 const toggle = document.getElementById("themeToggle");
 
 if (toggle) {
@@ -23,11 +51,11 @@ function onScroll() {
   } else {
     backToTop.classList.remove('show');
   }
-  
+
   // Active nav link highlighting
   const sections = document.querySelectorAll('.section[id]');
   const navLinks = document.querySelectorAll('.navbar nav a');
-  
+
   let current = '';
   sections.forEach(section => {
     const sectionTop = section.offsetTop - 100;
@@ -35,7 +63,7 @@ function onScroll() {
       current = section.getAttribute('id');
     }
   });
-  
+
   navLinks.forEach(link => {
     link.classList.remove('active');
     if (link.getAttribute('href') === '#' + current) {
@@ -77,17 +105,17 @@ const translations = {
     'project4.title': 'Reservation website For YouLux Cars',
     'project4.desc': 'Write a backend and frontend website; UI/UX is simple and understandable.',
     'project4.link': 'View',
-  'project3.title': 'PFE stage website.',
-  'project3.desc': 'I created a single-page representative website for a well-known rental company in Marrakech.',
-  'project3.link': 'View',
+    'project3.title': 'PFE stage website.',
+    'project3.desc': 'I created a single-page representative website for a well-known rental company in Marrakech.',
+    'project3.link': 'View',
     'skills.title': 'Skills',
     'contact.title': 'Contact',
-  'article.title': 'Home Lab - Small work area with two domain controllers.',
-  'article.meta': 'By Achraf — March 29, 2026 · 3 min read',
-  'article.lead': 'Windows Server Home Lab - Full Technical Refresh.',
-      'article.back': '← Back to home',
-      // article.body contains HTML; default English content copied from article.html
-      'article.body': `
+    'article.title': 'Home Lab - Small work area with two domain controllers.',
+    'article.meta': 'By Achraf — March 29, 2026 · 3 min read',
+    'article.lead': 'Windows Server Home Lab - Full Technical Refresh.',
+    'article.back': '← Back to home',
+    // article.body contains HTML; default English content copied from article.html
+    'article.body': `
         <p class="lead">Windows Server Home Lab - Full Technical Refresh.</p>
 
         <h2>Main Goals</h2>
@@ -242,9 +270,9 @@ const translations = {
     'project4.title': 'Reservierungswebsite für YouLux Cars',
     'project4.desc': 'Entwicklung eines Backends und Frontends; UI/UX ist einfach und verständlich.',
     'project4.link': 'Ansehen',
-  'project3.title': 'PFE Praktikumswebsite',
-  'project3.desc': 'Ich habe eine einseitige repräsentative Website für ein bekanntes Mietunternehmen in Marrakesch erstellt.',
-  'project3.link': 'Ansehen',
+    'project3.title': 'PFE Praktikumswebsite',
+    'project3.desc': 'Ich habe eine einseitige repräsentative Website für ein bekanntes Mietunternehmen in Marrakesch erstellt.',
+    'project3.link': 'Ansehen',
     'skills.title': 'Fähigkeiten',
     'contact.title': 'Kontakt',
     'article.title': 'Schreibe deinen Text hier',
@@ -355,9 +383,9 @@ const translations = {
     'project4.title': 'Site de réservation pour YouLux Cars',
     'project4.desc': 'Développement backend et frontend ; UI/UX simple et compréhensible.',
     'project4.link': 'Voir',
-  'project3.title': 'Site de stage PFE',
-  'project3.desc': 'J\'ai réalisé un site web monopage représentatif pour une société de location bien connue à Marrakech.',
-  'project3.link': 'Voir',
+    'project3.title': 'Site de stage PFE',
+    'project3.desc': 'J\'ai réalisé un site web monopage représentatif pour une société de location bien connue à Marrakech.',
+    'project3.link': 'Voir',
     'skills.title': 'Compétences',
     'contact.title': 'Contact',
     'article.title': 'Écrivez votre texte ici',
@@ -479,9 +507,9 @@ const translations = {
     'project4.title': 'موقع حجز لـ YouLux Cars',
     'project4.desc': 'كتابة واجهة خلفية وأمامية؛ واجهة المستخدم/تجربة المستخدم بسيطة ومفهومة.',
     'project4.link': 'عرض',
-  'project3.title': 'موقع PFE لمشروع/تدريب',
-  'project3.desc': 'قمت بإنشاء موقع صفحة واحدة تمثيلي لشركة تأجير معروفة في مراكش.',
-  'project3.link': 'عرض',
+    'project3.title': 'موقع PFE لمشروع/تدريب',
+    'project3.desc': 'قمت بإنشاء موقع صفحة واحدة تمثيلي لشركة تأجير معروفة في مراكش.',
+    'project3.link': 'عرض',
     'skills.title': 'المهارات',
     'contact.title': 'اتصل',
     'article.title': 'اكتب نصك هنا',
@@ -599,9 +627,9 @@ const translations = {
     'project4.title': 'Sitio de reservas para YouLux Cars',
     'project4.desc': 'Desarrollar backend y frontend; UI/UX simple y comprensible.',
     'project4.link': 'Ver',
-  'project3.title': 'Sitio web PFE de prácticas',
-  'project3.desc': 'He creado un sitio web de una sola página representativo para una conocida empresa de alquiler en Marrakech.',
-  'project3.link': 'Ver',
+    'project3.title': 'Sitio web PFE de prácticas',
+    'project3.desc': 'He creado un sitio web de una sola página representativo para una conocida empresa de alquiler en Marrakech.',
+    'project3.link': 'Ver',
     'skills.title': 'Habilidades',
     'contact.title': 'Contacto',
     'article.title': 'Escribe tu texto aquí',
@@ -807,14 +835,15 @@ function enhanceArticle() {
 }
 function initLanguage() {
   const saved = localStorage.getItem('site_lang');
-  const browser = (navigator.language || 'en').slice(0,2);
-  const lang = saved || (['de','fr','ar','es'].includes(browser) ? browser : 'en');
+  const browser = (navigator.language || 'en').slice(0, 2);
+  const lang = saved || (['de', 'fr', 'ar', 'es'].includes(browser) ? browser : 'en');
   // set all selects
-  langSelects.forEach(s => { s.value = lang; s.addEventListener('change', e => {
-    const v = e.target.value;
-    localStorage.setItem('site_lang', v);
-    applyTranslations(v);
-  });
+  langSelects.forEach(s => {
+    s.value = lang; s.addEventListener('change', e => {
+      const v = e.target.value;
+      localStorage.setItem('site_lang', v);
+      applyTranslations(v);
+    });
   });
   applyTranslations(lang);
 }
@@ -865,7 +894,7 @@ function enhanceIndex() {
     if (!n) return;
     n.classList.add('reveal');
     n.style.transitionDelay = (i * 60) + 'ms';
-    
+
     // Set skill level CSS variable
     if (n.dataset && n.dataset.level) {
       n.style.setProperty('--level', n.dataset.level);
@@ -893,7 +922,7 @@ if (document.readyState === 'loading') {
 
 // ensure applyTranslations triggers both enhancements
 const _origApply = applyTranslations;
-applyTranslations = function(lang) {
+applyTranslations = function (lang) {
   _origApply(lang);
   if (typeof enhanceArticle === 'function') enhanceArticle();
   if (typeof enhanceIndex === 'function') enhanceIndex();
@@ -904,11 +933,11 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const message = document.getElementById('message').value.trim();
-    
+
     if (!name || !email || !message) {
       alert('Please fill all fields');
       return;
@@ -941,12 +970,12 @@ if (contactForm) {
         throw new Error(result.error);
       }
 
-    } catch(error) {
+    } catch (error) {
       submitBtn.textContent = '❌ Error! Please try again';
       if (feedbackEl) feedbackEl.textContent = 'Failed to send — please try again later.';
       console.error('%c❌ Error saving message', 'color: red; font-weight: bold', error);
     }
-    
+
     setTimeout(() => {
       contactForm.reset();
       submitBtn.textContent = originalText;
@@ -963,7 +992,7 @@ document.addEventListener('click', (e) => {
     document.body.style.opacity = '0';
     document.body.style.transform = 'translateY(-10px)';
     document.body.style.transition = 'all 200ms ease';
-    
+
     setTimeout(() => {
       window.location.href = link.href;
     }, 200);

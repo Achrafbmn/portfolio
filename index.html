@@ -6,23 +6,20 @@
   <meta name="description" content="Achraf Bourramane - Web Developer, Network Administrator and IT Technician based in Marrakech. Portfolio with projects, skills and contact information.">
   <meta name="keywords" content="web developer, network administrator, IT technician, portfolio, Marrakech, Windows Server, Active Directory">
   <meta name="author" content="Achraf Bourramane">
-  
-  <!-- Open Graph / Facebook -->
+
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://achrafbmn.github.io/portfolio/">
   <meta property="og:title" content="Achraf Bourramane | Portfolio">
   <meta property="og:description" content="Web Developer / Network Administrator / IT Technician">
   <meta property="og:image" content="https://achrafbmn.github.io/portfolio/og-image.jpg">
 
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://achrafbmn.github.io/portfolio/">
   <meta property="twitter:title" content="Achraf Bourramane | Portfolio">
   <meta property="twitter:description" content="Web Developer / Network Administrator / IT Technician">
   <meta property="twitter:image" content="https://achrafbmn.github.io/portfolio/og-image.jpg">
-  
+
   <title>Achraf Bourramane | Portfolio</title>
-  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,23 +30,29 @@
   }
   </script>
   <link rel="stylesheet" href="style.css">
-  <!-- favicon -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="favicon.svg">
-  <meta name="theme-color" content="#00adb5">
+  <meta name="theme-color" content="#0d1b2a">
 </head>
 <body>
+  <header class="navbar fade-in">
+    <div class="brand">
+      <div class="brand-mark">AB</div>
+      <div class="brand-copy">
+        <strong>Achraf Bourramane</strong>
+        <span>IT Specialist</span>
+      </div>
+    </div>
 
-  <!-- Navbar -->
-  <header class="navbar section fade-in">
-  <h1 class="logo">Achraf Bourramane</h1>
-  <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-  <nav>
+    <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <nav>
       <a href="#about" data-i18n="nav.about">About</a>
       <a href="#projects" data-i18n="nav.projects">Projects</a>
       <a href="#skills" data-i18n="nav.skills">Skills</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
+
     <div class="nav-actions">
       <select id="langSelect" aria-label="Select language">
         <option value="en">EN</option>
@@ -62,102 +65,193 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-  <h2 data-i18n="hero.title">Hello, I’m Achraf Bourramane</h2>
-  <div class="accent-underline" aria-hidden="true"></div>
-  <p data-i18n="hero.tagline">Web Developer / Network Administrator / IT technicien</p>
-  <div style="display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; justify-content: center;">
-    <button class="hero-cta" onclick="scrollToSection('projects')" data-i18n="hero.cta">View My Work</button>
-    <button class="hero-cta hero-cta-secondary" onclick="window.open('CV-trial(1).pdf', '_blank')" data-i18n="hero.download">Download Resume</button>
-  </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">IT • NETWORK • WEB • SECURITY</p>
+        <h1 data-i18n="hero.title">Hello, I’m Achraf Bourramane</h1>
+        <div class="accent-line" aria-hidden="true"></div>
+        <p class="hero-tagline" data-i18n="hero.tagline">Web Developer / Network Administrator / IT technician</p>
 
-  <!-- About -->
-  <section id="about" class="section">
-    <h2 data-i18n="about.title">About Me</h2><br>
-    <p id="about-text" data-i18n="about.text">
-      I am a Network and System Administrator with a passion for web development, and I hold a university degree in Computer Science. Additionally, I am constantly learning new technologies and frameworks to expand my skill set. <br>
-      I have experience working with various programming languages and tools. <br>
-      And I have a strong ability to solve complex problems and develop innovative solutions.
-    </p>
-  </section>
+        <div class="hero-actions">
+          <button class="primary-btn" onclick="scrollToSection('projects')" data-i18n="hero.cta">View My Work</button>
+          <button class="secondary-btn" onclick="window.open('CV-trial(1).pdf', '_blank')" data-i18n="hero.download">Download Resume</button>
+        </div>
 
-  <!-- Projects -->
-  <section id="projects" class="section dark">
-    <h2 data-i18n="projects.title">Projects</h2><br>
-
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3 style="color: brown;" data-i18n="project1.title">Representive Website for Meuer Enterprises</h3><br>
-        <p data-i18n="project1.desc">this My first project in my first stage at Meuer Company following the steps and instructions given to me.</p>
-        <a href="https://achrafbmn.github.io/Pro/" target="_blank" data-i18n="project1.link">View</a>
+        <ul class="hero-metrics">
+          <li><strong>Network</strong><span>AD / DNS / DHCP</span></li>
+          <li><strong>Systems</strong><span>Windows / Linux</span></li>
+          <li><strong>Web</strong><span>HTML / CSS / JS</span></li>
+        </ul>
       </div>
 
-      <div class="project-card">
-        <h3 style="color: brown;" data-i18n="project2.title">Home lab with Two DCs</h3><br>
-        <p data-i18n="project2.desc">I made a home lab with two domain controllers for testing and learning purposes and exploring DNS server and Active Directory also Https and DHCP server.</p>
-        <a href="article.html" data-i18n="project2.link">View</a>
+      <div class="hero-panel">
+        <div class="panel-card status-card">
+          <div class="status-header">
+            <span class="status-dot"></span>
+            <span>System status</span>
+          </div>
+          <div class="status-body">
+            <strong>Available for your service</strong>
+            <small>Infrastructure, support, automation, and web delivery</small>
+          </div>
+        </div>
+
+        <div class="panel-card tech-stack">
+          <span>Windows Server</span>
+          <span>Active Directory</span>
+          <span>PowerShell</span>
+          <span>Wireshark</span>
+          <span>SQL</span>
+          <span>Cybersecurity</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="section-head">
+        <p class="section-kicker">About</p>
+        <h2 data-i18n="about.title">About Me</h2>
       </div>
 
-      <div class="project-card">
-        <h3 style="color: brown;" data-i18n="project3.title">PFE stage website.</h3><br>
-        <p data-i18n="project3.desc">I have made a Website a well known rent Company in Marrakech Monopage and a representive website.</p>
-        <a href="https://achrafbmn.github.io/Peace-Truck-Vichle/" target="_blank" data-i18n="project3.link">View</a>
+      <div class="about-grid">
+        <div class="about-card">
+          <p id="about-text" data-i18n="about.text">
+            I am a Network and System Administrator with a passion for web development, and I hold a university degree in Computer Science. I constantly learn new technologies and frameworks to expand my skill set.
+          </p>
+          <p>
+            I enjoy solving technical challenges, building reliable environments, and bridging the gap between infrastructure and digital services.
+          </p>
+        </div>
+
+        <div class="focus-list">
+          <div class="focus-item">
+            <span class="focus-tag">01</span>
+            <div>
+              <h3>Infrastructure</h3>
+              <p>Windows Server, AD, DHCP, DNS, networking and system maintenance.</p>
+            </div>
+          </div>
+
+          <div class="focus-item">
+            <span class="focus-tag">02</span>
+            <div>
+              <h3>Support</h3>
+              <p>IT troubleshooting, user support, secure setup, and operational continuity.</p>
+            </div>
+          </div>
+
+          <div class="focus-item">
+            <span class="focus-tag">03</span>
+            <div>
+              <h3>Development</h3>
+              <p>Front-end builds, web interfaces, and practical business-focused solutions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section dark-section">
+      <div class="section-head">
+        <p class="section-kicker">Projects</p>
+        <h2 data-i18n="projects.title">Projects</h2>
       </div>
 
-      <div class="project-card">
-        <h3 style="color: red;" data-i18n="project4.title">Reservation website For YouLux Cars</h3><br>
-        <p style="color: white;" data-i18n="project4.desc">Write a backend and frontend website; UI/UX is simple and understandable.</p>
-        <a href="https://achrafbmn.github.io/YouluxCars-Speed/" target="_blank" data-i18n="project4.link">View</a>
-      </div>
-    </div>
-  </section>
+      <div class="projects-grid">
+        <article class="project-card">
+          <span class="project-type">Website</span>
+          <h3 data-i18n="project1.title">Representative Website for Meuer Enterprises</h3>
+          <p data-i18n="project1.desc">This was my first project during my internship at Meuer Company, following the steps and instructions provided.</p>
+          <a href="https://achrafbmn.github.io/Pro/" target="_blank" data-i18n="project1.link">View</a>
+        </article>
 
-  <!-- Skills -->
-  <section id="skills" class="section">
-    <h2 data-i18n="skills.title">Skills</h2>
-    <ul class="skills-list">
-      <li data-level="95">HTML</li>
-      <li data-level="90">CSS / SCSS</li>
-      <li data-level="85">JavaScript</li>
-      <li data-level="80">TypeScript</li>
-      <li data-level="92">Network</li>
-      <li data-level="82">Database Management</li>
-      <li data-level="85">SQL</li>
-      <li data-level="78">PHP</li>
-      <li data-level="80">Python</li>
-      <li data-level="88">Linux</li>
-      <li data-level="75">MERISE/ UML</li>
-      <li data-level="80">CyberSecurity Compliance</li>
-      <li data-level="85">Wireshark</li>
-      <li data-level="85">Tailwind | Bootstrap</li>
-    </ul>
-  </section>
+        <article class="project-card">
+          <span class="project-type">Lab</span>
+          <h3 data-i18n="project2.title">Home lab with Two DCs</h3>
+          <p data-i18n="project2.desc">I built a home lab with two domain controllers to test DNS, Active Directory, HTTPS, and DHCP in a realistic environment.</p>
+          <a href="article.html" data-i18n="project2.link">View</a>
+        </article>
 
-  <!-- Contact -->
-  <section id="contact" class="section dark">
-    <h2 data-i18n="contact.title">Contact</h2><br>
-    <p>Email: AchrafBourraman@gmail.com</p><br>
-    <p>Phone: +212 694170015</p><br>
-    <p><a href="https://www.linkedin.com/in/achraf-bourramane-49555a273/" target="_blank" class="My-Link">LinkedIn</a> | <a href="https://github.com/Achrafbmn" class="My-Link" target="_blank">GitHub</a> | <a href="https://www.instagram.com/achraf.bmn/" class="My-Link" target="_blank">Instagram</a></p>
-    <br>
-    <form id="contactForm" style="max-width: 500px; margin: 24px auto 0;">
-      <div style="display: grid; gap: 16px;">
-        <input type="text" id="name" name="name" aria-label="Your name" placeholder="Your Name" required style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-size: 16px;">
-        <input type="email" id="email" name="email" aria-label="Your email" placeholder="Your Email" required style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-size: 16px;">
-        <textarea id="message" name="message" rows="5" aria-label="Your message" placeholder="Your Message" required style="padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: white; font-size: 16px; resize: vertical;"></textarea>
-        <button type="submit" class="hero-cta" style="margin-top: 8px;">Send Message</button>
-        <div id="contactFeedback" aria-live="polite" style="min-height:1.2em; color: #fff;"></div>
+        <article class="project-card">
+          <span class="project-type">Website</span>
+          <h3 data-i18n="project3.title">PFE stage website</h3>
+          <p data-i18n="project3.desc">I created a single-page representative website for a well-known rental company in Marrakech.</p>
+          <a href="https://achrafbmn.github.io/Peace-Truck-Vichle/" target="_blank" data-i18n="project3.link">View</a>
+        </article>
+
+        <article class="project-card">
+          <span class="project-type">Platform</span>
+          <h3 data-i18n="project4.title">Reservation website for YouLux Cars</h3>
+          <p data-i18n="project4.desc">Built both frontend and backend for a booking website with a clean, understandable user experience.</p>
+          <a href="https://achrafbmn.github.io/YouluxCars-Speed/" target="_blank" data-i18n="project4.link">View</a>
+        </article>
+
+        <article class="project-card">
+          <span class="project-type">Management</span>
+          <h3>Project Management Dashboard</h3>
+          <p>Built a project management web application for planning, tracking, and organizing tasks in a modern workflow.</p>
+          <a href="https://gestion-de-projet-murex.vercel.app/" target="_blank">View</a>
+        </article>
       </div>
-    </form>
-  </section>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="section-head">
+        <p class="section-kicker">Skills</p>
+        <h2 data-i18n="skills.title">Skills</h2>
+      </div>
+
+      <ul class="skills-list">
+        <li data-level="95">HTML</li>
+        <li data-level="90">CSS / SCSS</li>
+        <li data-level="85">JavaScript</li>
+        <li data-level="80">TypeScript</li>
+        <li data-level="92">Network</li>
+        <li data-level="82">DB Management</li>
+        <li data-level="85">SQL</li>
+        <li data-level="78">PHP</li>
+        <li data-level="80">Python</li>
+        <li data-level="88">Linux</li>
+        <li data-level="75">MERISE / UML</li>
+        <li data-level="80">Cybersecurity</li>
+        <li data-level="85">Wireshark</li>
+        <li data-level="85">Tailwind / Bootstrap</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section dark-section">
+      <div class="section-head">
+        <p class="section-kicker">Contact</p>
+        <h2 data-i18n="contact.title">Contact</h2>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-card">
+          <p><strong>Email:</strong> AchrafBourraman@gmail.com</p>
+          <p><strong>Phone:</strong> +212 694170015</p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/achraf-bourramane-49555a273/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/Achrafbmn" target="_blank">GitHub</a>
+            <a href="https://www.instagram.com/achraf.bmn/" target="_blank">Instagram</a>
+          </div>
+        </div>
+
+        <form id="contactForm" class="contact-form">
+          <input type="text" id="name" name="name" aria-label="Your name" placeholder="Your Name" required>
+          <input type="email" id="email" name="email" aria-label="Your email" placeholder="Your Email" required>
+          <textarea id="message" name="message" rows="5" aria-label="Your message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+          <div id="contactFeedback" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p>© 2026 Achraf Bourramane</p>
   </footer>
 
-  <!-- Back to top button -->
   <button id="backToTop" aria-label="Back to top">↑</button>
 
   <script src="script.js"></script>
